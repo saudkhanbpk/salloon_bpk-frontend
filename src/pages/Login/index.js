@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { GoogleLogin } from "react-google-login";
+import { Auth,Provider } from "../../firebase";
+import { signInWithPopup } from "firebase/auth";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import AppleLogin from "react-apple-login";
 import { withRouter } from "react-router";
@@ -17,6 +19,7 @@ import BtnLoader from "../../Componet/loaders/btnLoader";
 import Signup from "../Signup";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
+
 const SiginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required."),
   password: Yup.string()
@@ -31,7 +34,9 @@ export class Login extends Component {
     this.state = {
       apiError: "",
       apiLoader: false,
+      value:""
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   responseGoogle = (response) => {
     console.log("google", response);
@@ -39,8 +44,30 @@ export class Login extends Component {
   responseFacebook = (response) => {
    console.log("facebook", response);
   };
+  componentDidMount(){
+    this.setState({value:localStorage.getItem('email')})
+     // this.props.history.push('/');
+    // if(localStorage.getItem === true){
+    //   this.props.history.push('/');
+    // }
+  }
+  handleClick(){
+    signInWithPopup(Auth,Provider).then((data)=>{
+    this.setState({value:data.user.email})
+    localStorage.setItem("email",data.user.email);
+    
+    // this.props.history.push('/');
+    // if(localStorage.getItem === true){
+    //   this.props.history.push('/');
+    // }
+    
+    })
+        }
+      
   render() {
-    const clientId = "760680645403-mrvuaie01oo3juglh17qbhms57f5gb7j.apps.googleusercontent.com"
+    const clientId = "760680645403-mrvuaie01oo3juglh17qbhms57f5gb7j.apps.googleusercontent.com";
+  
+    
     return (
       <div className="container-fluid">
         <div className="row">
@@ -253,7 +280,7 @@ export class Login extends Component {
 
               <p className="otherThenLogin mb-0">Or</p>
               <div>
-                <GoogleLogin
+                 <GoogleLogin
                   clientId={clientId}
                   onSuccess={this.responseGoogle}
                   onFailure={this.responseGoogle}
@@ -263,11 +290,11 @@ export class Login extends Component {
                   render={(renderProps) => (
                     <button
                       className="loginWithGoolge"
-                      onClick={renderProps.onClick}
+                      onClick={() => this.handleClick()}
                       disabled={renderProps.disabled}
                     >
                       <img src={googleIcon} />
-                      Connect with Google
+                      Connect with Google 
                     </button>
                   )}
                 />
