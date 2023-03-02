@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { GoogleLogin } from "react-google-login";
-import { Auth,Provider } from "../../firebase";
+import { Auth, Provider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import AppleLogin from "react-apple-login";
@@ -29,12 +29,12 @@ const SiginSchema = Yup.object().shape({
 });
 
 export class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       apiError: "",
       apiLoader: false,
-      value:""
+      value: "",
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -42,32 +42,25 @@ export class Login extends Component {
     console.log("google", response);
   };
   responseFacebook = (response) => {
-   console.log("facebook", response);
+    console.log("facebook", response);
   };
-  componentDidMount(){
-    this.setState({value:localStorage.getItem('email')})
-     // this.props.history.push('/');
-    // if(localStorage.getItem === true){
-    //   this.props.history.push('/');
-    // }
+  componentDidMount() {
+    this.setState({ value: localStorage.getItem("token") });
   }
-  handleClick(){
-    signInWithPopup(Auth,Provider).then((data)=>{
-    this.setState({value:data.user.email})
-    localStorage.setItem("email",data.user.email);
-    
-    // this.props.history.push('/');
-    // if(localStorage.getItem === true){
-    //   this.props.history.push('/');
-    // }
-    
-    })
-        }
-      
+  handleClick() {
+    signInWithPopup(Auth, Provider).then((data) => {
+      this.setState({ value: data.user.email });
+      localStorage.setItem("token", data.user.email);
+      if (data.user?.accessToken) {
+        this.props.history.push("/");
+      }
+    });
+  }
+
   render() {
-    const clientId = "760680645403-mrvuaie01oo3juglh17qbhms57f5gb7j.apps.googleusercontent.com";
-  
-    
+    const clientId =
+      "760680645403-mrvuaie01oo3juglh17qbhms57f5gb7j.apps.googleusercontent.com";
+
     return (
       <div className="container-fluid">
         <div className="row">
@@ -77,22 +70,21 @@ export class Login extends Component {
             </div>
           </div>
           <div className="col-md-6 LoginContainer bg-white">
-
             <div className="loginInerContainer ">
               {/* ***************** */}
               <div
-              className="logoContainer "
-              onClick={() => this.props.history.push("/")}
-            >
-              <img src={logo} />
-            </div>
-            <div className="my-2">
-            <h3>Welcome Back !</h3>
-            <p>
-              Find the latest and greatest saloons in your country and avail the
-              best services in areas at your nearest location
-            </p>
-            </div>
+                className="logoContainer "
+                onClick={() => this.props.history.push("/")}
+              >
+                <img src={logo} />
+              </div>
+              <div className="my-2">
+                <h3>Welcome Back !</h3>
+                <p>
+                  Find the latest and greatest saloons in your country and avail
+                  the best services in areas at your nearest location
+                </p>
+              </div>
               <Formik
                 initialValues={{
                   email: "",
@@ -101,10 +93,8 @@ export class Login extends Component {
                 }}
                 validationSchema={SiginSchema}
                 onSubmit={(values) => {
-
                   this.setState({ apiLoader: true, apiError: "" });
                   if (this.props.match.params.user == "user") {
-
                     let data = {
                       email: values.email,
                       password: values.password,
@@ -112,17 +102,16 @@ export class Login extends Component {
                     AuthApi.login(data)
                       .then((res) => {
                         console.log("res", res);
-                          localStorage.setItem("token", res.data.token);
-                          localStorage.setItem(
-                                    "profile",
-                                     JSON.stringify(res.data.user)
-                                   );
-                                   this.props.history.push("/");
-                          this.setState({
-                            apiError: res.data.message,
-                            apiLoader: false,
-                          });
-
+                        localStorage.setItem("token", res.data.token);
+                        localStorage.setItem(
+                          "profile",
+                          JSON.stringify(res.data.user)
+                        );
+                        this.props.history.push("/");
+                        this.setState({
+                          apiError: res.data.message,
+                          apiLoader: false,
+                        });
                       })
                       .catch((err) => {
                         console.log("err", err);
@@ -140,17 +129,16 @@ export class Login extends Component {
 
                       .then((res) => {
                         console.log("res", res);
-                          localStorage.setItem("token", res.data.token);
-                          localStorage.setItem(
-                            "profile",
-                             JSON.stringify(res.data.user)
-                           );
-                           this.props.history.push("/");
-                          this.setState({
-                            apiError: res.data.message,
-                            apiLoader: false,
-                          });
-
+                        localStorage.setItem("token", res.data.token);
+                        localStorage.setItem(
+                          "profile",
+                          JSON.stringify(res.data.user)
+                        );
+                        this.props.history.push("/");
+                        this.setState({
+                          apiError: res.data.message,
+                          apiLoader: false,
+                        });
                       })
                       .catch((err) => {
                         console.log("err", err);
@@ -171,7 +159,6 @@ export class Login extends Component {
                   //       );
                   //       this.props.history.push("/");
                   //     }
-
 
                   //     this.setState({
                   //       apiError: response.data.msg,
@@ -266,7 +253,9 @@ export class Login extends Component {
                         </div>
                         <div>
                           <button
-                            onClick={() => this.props.history.push("/signup/:user")}
+                            onClick={() =>
+                              this.props.history.push("/signup/:user")
+                            }
                           >
                             Create Account
                           </button>
@@ -280,11 +269,11 @@ export class Login extends Component {
 
               <p className="otherThenLogin mb-0">Or</p>
               <div>
-                 <GoogleLogin
+                <GoogleLogin
                   clientId={clientId}
                   onSuccess={this.responseGoogle}
                   onFailure={this.responseGoogle}
-                  isSignedIn= {true}
+                  isSignedIn={true}
                   // redirectUri="http://localhos/"
                   cookiePolicy={"single_host_origin"}
                   render={(renderProps) => (
@@ -294,7 +283,7 @@ export class Login extends Component {
                       disabled={renderProps.disabled}
                     >
                       <img src={googleIcon} />
-                      Connect with Google 
+                      Connect with Google
                     </button>
                   )}
                 />

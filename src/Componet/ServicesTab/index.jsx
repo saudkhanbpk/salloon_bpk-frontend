@@ -195,6 +195,7 @@ class ServicesTab extends Component {
                                   <div className="main_custom_chk_desri">
                                     {data.services &&
                                       data.services.map((data1, i) => {
+                                        console.log("servicesDa:", data1);
                                         return (
                                           <div className="custom_ceckbox_description">
                                             <div class="form-group mb-0">
@@ -250,7 +251,7 @@ class ServicesTab extends Component {
                   </div>
                   <div className="strt_continue_btn">
                     <button
-                      disabled={this.props.bookingDetail.Services == null}
+                      // disabled={this.props.bookingDetail.Services == null}
                       onClick={() => {
                         this.props.updateTabs(1);
                       }}
