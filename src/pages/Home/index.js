@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import Header from "../../Componet/Headers/Header";
 import { Link, withRouter, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "react-bootstrap/Carousel";
 import slider1 from "../../assets/imge/slider1.gif";
 import slider2 from "../../assets/imge/2090218.jpg";
 import slider10 from "../../assets/imge/slider10.jpg";
@@ -50,11 +50,11 @@ export class Home extends Component {
       searchResults: [],
       SaloonId: null,
       resultDropdown: false,
-      showDropDown:false,
+      showDropDown: false,
       selectDropdown: false,
       SaloonName: "",
-      ShopName:"",
-      selectShop:"",
+      ShopName: "",
+      selectShop: "",
     };
     AOS.init({
       duration: 3000,
@@ -120,7 +120,7 @@ export class Home extends Component {
     }
   };
   search = () => {
-    let { startDate, category, SaloonId,selectShop } = this.state;
+    let { startDate, category, SaloonId, selectShop } = this.state;
     if (startDate && this.state.selectedCat) {
       this.props.history.push(
         `/saloons/${this.state.selectedCat}/${startDate}`
@@ -129,9 +129,8 @@ export class Home extends Component {
       this.props.history.push(`/saloon/${this.state.SaloonId._id}`);
     } else if (this.state.selectedCat) {
       this.props.history.push(`/saloons/${this.state.selectedCat}`);
-    }
-    else if(this.state.selectShop){
-      this.props.history.push("/saloons", {state:this.state.selectShop});
+    } else if (this.state.selectShop) {
+      this.props.history.push("/saloons", { state: this.state.selectShop });
     }
   };
   handleDropdown1 = () => {
@@ -140,7 +139,7 @@ export class Home extends Component {
     });
   };
   render() {
-    console.log("props", this.props)
+    console.log("props", this.props);
     const homeslider = {
       dots: false,
       infinite: true,
@@ -226,29 +225,28 @@ export class Home extends Component {
                     )}
                   </div> */}
                   <Carousel fade>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={slider12}
-          alt="First slide"
-        />
-        
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={slider10}
-          alt="Second slide"
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={slider11}
-          alt="Third slide"
-        />
-      </Carousel.Item>
-    </Carousel>
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100"
+                        src={slider12}
+                        alt="First slide"
+                      />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100"
+                        src={slider10}
+                        alt="Second slide"
+                      />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100"
+                        src={slider11}
+                        alt="Third slide"
+                      />
+                    </Carousel.Item>
+                  </Carousel>
 
                   <div
                     className="home_slider_caption carousel-caption"
@@ -352,19 +350,24 @@ export class Home extends Component {
                           name=""
                           id=""
                           className="form-control"
-
-
                         >
                           <option value="DEFAULT" disabled>
                             {this.props.t("SelectCategory")}
                           </option>
                           <option value="all">{this.props.t("All")}</option>
-                          <option value="Hairs">{this.props.t("HAIRSALOON")}</option>
-                          <option value="Nail">{this.props.t("NAILSALOON")}</option>
-                          <option value="Barber">{this.props.t("BARBERSHOP")} </option>
-                          <option value="beauty">{this.props.t("BEAUTYSALOON")} </option>
+                          <option value="Hairs">
+                            {this.props.t("HAIRSALOON")}
+                          </option>
+                          <option value="Nail">
+                            {this.props.t("NAILSALOON")}
+                          </option>
+                          <option value="Barber">
+                            {this.props.t("BARBERSHOP")}{" "}
+                          </option>
+                          <option value="beauty">
+                            {this.props.t("BEAUTYSALOON")}{" "}
+                          </option>
                           <option value="Spa">{this.props.t("SPA")} </option>
-
                         </select>
                         <div className="custyom_arrow_link">
                           <FaChevronDown onClick={this.handleDropdown1} />
@@ -391,7 +394,8 @@ export class Home extends Component {
                         <div className="custyom_arrow_link">
                           <FaChevronDown onClick={this.handleDropdown1} />
                         </div>
-                      </div> */}</div>
+                      </div> */}
+                      </div>
                       <div className="search_btn_slider">
                         <button
                           onClick={() => {
@@ -416,8 +420,8 @@ export class Home extends Component {
 
         <div className="container mt-1">
           <div className="howitsword text-center">
-            <p>{ this.props.t("Para1")}</p>
-            <h3>{ this.props.t("Head1")}</h3>
+            <p>{this.props.t("Para1")}</p>
+            <h3>{this.props.t("Head1")}</h3>
           </div>
           <div className="row">
             <div
@@ -430,9 +434,7 @@ export class Home extends Component {
                 <h4>
                   {this.props.t("Head8")} <br />& {this.props.t("Head8Half")}
                 </h4>
-                <p>
-                  { this.props.t("para10")}
-                </p>
+                <p>{this.props.t("para10")}</p>
               </div>
             </div>
             <div
@@ -443,11 +445,10 @@ export class Home extends Component {
               <div className="whyCardsContainer">
                 <img src={calendar} alt="cardImge" />
                 <h4>
-                  {this.props.t("homeHead2")} <br />& {this.props.t("Head8Half")}
+                  {this.props.t("homeHead2")} <br />&{" "}
+                  {this.props.t("Head8Half")}
                 </h4>
-                <p>
-                  {this.props.t("para11")}{" "}
-                </p>
+                <p>{this.props.t("para11")} </p>
               </div>
             </div>
             <div
@@ -461,11 +462,7 @@ export class Home extends Component {
                   {this.props.t("homeHead1")} <br />
                   {this.props.t("homeHead1Half")}
                 </h4>
-                <p>
-                  {
-                    this.props.t("para12")
-                  }{" "}
-                </p>
+                <p>{this.props.t("para12")} </p>
               </div>
             </div>
           </div>
@@ -483,9 +480,7 @@ export class Home extends Component {
               <div className="downapp">
                 <h1>{this.props.t("DownloadApp")}</h1>
               </div>
-              <p>
-                {this.props.t("Para9")}
-              </p>
+              <p>{this.props.t("Para9")}</p>
               <div className="playStoreIcons">
                 <div>
                   <img src={applePlayStore} />
@@ -515,12 +510,11 @@ export class Home extends Component {
             <div className="heading_home_categories">
               <h3>{this.props.t("Head7")}</h3>
               <p>
-                {this.props.t("Para8")} <br />{" "}
-                {this.props.t("Para8Half")}
+                {this.props.t("Para8")} <br /> {this.props.t("Para8Half")}
               </p>
             </div>
             <div className="categories_list_home">
-              <CategorieCardList  />
+              <CategorieCardList />
             </div>
           </div>
         </section>
@@ -546,15 +540,12 @@ export class Home extends Component {
                 <div className="col-md-6" data-aos="fade-left">
                   <div className="goSmartDes py-3">
                     <h2 className="gosmart">
-                      {this.props.t("SpanPart")} – <span>{ this.props.t("Span")}</span>
+                      {this.props.t("SpanPart")} –{" "}
+                      <span>{this.props.t("Span")}</span>
                     </h2>
-                    <p>
-                     {this.props.t("Para6")}
-                    </p>
+                    <p>{this.props.t("Para6")}</p>
                     <h3>{this.props.t("Head5")}</h3>
-                    <p>
-                     {this.props.t("Para5")}
-                    </p>
+                    <p>{this.props.t("Para5")}</p>
                     {/* <div className="playStoreIcons my-4 responsive  ">
                       <div>
                         <img src={applePlayStore} />
@@ -684,7 +675,7 @@ export class Home extends Component {
                 <div className="storiesHeader">
                   <h6>{this.props.t("Head3")}</h6>
                   <h2>
-                    { this.props.t("Head4")} <br></br>
+                    {this.props.t("Head4")} <br></br>
                     {this.props.t("br")}
                   </h2>
                 </div>
@@ -756,56 +747,57 @@ export class Home extends Component {
               <h3>{this.props.t("Head")}</h3>
               <div className="book_app_inp">
                 <input
-                onChange={this.searchShop}
-                value={this.state.ShopName}
+                  onChange={this.searchShop}
+                  value={this.state.ShopName}
                   type="text"
                   className="form-control"
                   placeholder={this.props.t("Search")}
                 />
                 <MdLocationOn className="inpu_icon" />
-                <button className="btn" onClick={() => {
-                            this.search();
-                          }}>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    this.search();
+                  }}
+                >
                   <HiChevronRight />
                 </button>
-                {this.state.showDropDown? (
-                        <div className="main_locations_suggest">
-                          <ul>
-                            {this.state.searchResults.length > 0 ? (
-                              this.state.searchResults.map((data) => (
-                                <div key={data.id}>
-                                  <li
-                                    onClick={() => {
-                                      this.setState({
-                                        SaloonId: data,
-                                        ShopName: data.Name,
-                                        showDropDown: false,
-                                      });
-                                    }}
-                                    className="saloonData"
-                                  >
-                                    {data.Name}
-                                  </li>
-                                </div>
-                              ))
-                            ) : (
-                              <span style={{ color: "black" }}>
-                                no data found
-                              </span>
-                            )}
-                          </ul>
-                        </div>
+                {this.state.showDropDown ? (
+                  <div className="main_locations_suggest">
+                    <ul>
+                      {this.state.searchResults.length > 0 ? (
+                        this.state.searchResults.map((data) => (
+                          <div key={data.id}>
+                            <li
+                              onClick={() => {
+                                this.setState({
+                                  SaloonId: data,
+                                  ShopName: data.Name,
+                                  showDropDown: false,
+                                });
+                              }}
+                              className="saloonData"
+                            >
+                              {data.Name}
+                            </li>
+                          </div>
+                        ))
                       ) : (
-                        ""
+                        <span style={{ color: "black" }}>no data found</span>
                       )}
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
-              <p>{ this.props.t("Para2")}</p>
+              <p>{this.props.t("Para2")}</p>
             </div>
           </div>
         </section>
 
         <Footer
-          // translate={this.props.t} i18n={this.props.i18n}
+        // translate={this.props.t} i18n={this.props.i18n}
         />
       </div>
     );

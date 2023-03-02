@@ -39,18 +39,20 @@ class WizardFrom extends Component {
       count: 2,
       booked: false,
       tabscustom: 0,
-      bookingDetail: [{
-        Saloon: "",
-        Services: null,
-        Products: [],
-        Staff: "",
-        Appointment_Date: "",
-        Payment_Type: "",
-        Time_Slot: "",
-        Total_Price: "",
-        diableTabs: false,
-        Discounted_Price: "",
-      }],
+      bookingDetail: [
+        {
+          Saloon: "",
+          Services: null,
+          Products: [],
+          Staff: "",
+          Appointment_Date: "",
+          Payment_Type: "",
+          Time_Slot: "",
+          Total_Price: "",
+          diableTabs: false,
+          Discounted_Price: "",
+        },
+      ],
     };
   }
   setBookingDetail = (name, value) => {
