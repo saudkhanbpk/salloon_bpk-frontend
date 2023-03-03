@@ -7695,8 +7695,8 @@ footer .container-fluid {
 .dealdes del {
   color: #f35162;
 }
-.discount{
-  color:rgb(255, 51, 0);
+.discount {
+  color: rgb(255, 51, 0);
   text-decoration: line-through;
 }
 
@@ -8957,6 +8957,7 @@ footer .container-fluid {
 } */
 .main_inpt_slider.first_inp {
   width: 30%;
+  margin-left: 1% !important;
 }
 
 .main_inpt_slider.date_pik input {
@@ -9516,7 +9517,7 @@ section.categories_home {
   .summary_last_box {
     margin-top: 2rem;
     overflow: auto;
-    height: 100vh
+    height: 100vh;
   }
 
   .heading_home_categories h3 {
@@ -9643,6 +9644,8 @@ section.categories_home {
 
   .main_inpt_slider.first_inp {
     width: 100%;
+    margin-left: 0% !important;
+    margin-top: 2% !important;
   }
 
   .main_inpt_slider.date_pik {
@@ -9868,24 +9871,21 @@ section.categories_home {
   .tabbed_wizard {
     padding: 16px 0;
     height: 125vh;
-    overflow: auto
+    overflow: auto;
   }
   .third_step {
     padding: 1rem;
     height: 125vh;
     overflow: auto;
-}
-#infotabsummary{
-  height: 108vh;
-  overflow: auto;
-}
-#bookedtablaststep{
-  height: 108vh;
-  overflow: auto;
-}
-
-
-
+  }
+  #infotabsummary {
+    height: 108vh;
+    overflow: auto;
+  }
+  #bookedtablaststep {
+    height: 108vh;
+    overflow: auto;
+  }
 
   .collapse_img img {
     background: linear-gradient(#a8cdf5 0%, #70b4ff 100%);
@@ -10353,13 +10353,7 @@ span.slick-arrow.slick-next.slick-disabled {
   }
 }
 
-#DOB::before   {
+#DOB::before {
   content: "Date of Birth";
   color: gray;
-
-
 }
-
-
-
-

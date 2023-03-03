@@ -279,6 +279,61 @@ export class Home extends Component {
                     </div>
 
                     <div className="form_search_slider">
+                      <div className="mani_select_slider">
+                        <select
+                          defaultValue={"DEFAULT"}
+                          onChange={(e) => {
+                            this.setState({ selectShop: e.target.value });
+                          }}
+                          name=""
+                          id=""
+                          className="form-control"
+                        >
+                          <option value="DEFAULT" disabled>
+                            {this.props.t("SelectCategory")}
+                          </option>
+                          <option value="all">{this.props.t("All")}</option>
+                          <option value="Hairs">
+                            {this.props.t("HAIRSALOON")}
+                          </option>
+                          <option value="Nail">
+                            {this.props.t("NAILSALOON")}
+                          </option>
+                          <option value="Barber">
+                            {this.props.t("BARBERSHOP")}{" "}
+                          </option>
+                          <option value="beauty">
+                            {this.props.t("BEAUTYSALOON")}{" "}
+                          </option>
+                          <option value="Spa">{this.props.t("SPA")} </option>
+                        </select>
+                        <div className="custyom_arrow_link">
+                          <FaChevronDown onClick={this.handleDropdown1} />
+                        </div>
+
+                        {/* className="form-control"
+
+                           {this.state.categoryData && this.state.categoryData.map((data) => {
+                                                                                          return <option value={data._id}>{data.title}</option>
+
+                                                                                    })
+                                                                                    }  */}
+
+                        {/* <option value="DEFAULT" disabled>
+                            Select Category
+                          </option>
+                          {this.state.categoryData &&
+                            this.state.categoryData.map((data) => {
+                              return (
+                                <option value={data._id}>{data.title}</option>
+                              );
+                            })}
+                        </select>{" "}
+                        <div className="custyom_arrow_link">
+                          <FaChevronDown onClick={this.handleDropdown1} />
+                        </div>
+                      </div> */}
+                      </div>
                       <div className="main_inpt_slider first_inp">
                         <input
                           onChange={this.searchSaloon}
@@ -341,61 +396,6 @@ export class Home extends Component {
                         {/* < GoCalendar/> */}
                       </div>
 
-                      <div className="mani_select_slider">
-                        <select
-                          defaultValue={"DEFAULT"}
-                          onChange={(e) => {
-                            this.setState({ selectShop: e.target.value });
-                          }}
-                          name=""
-                          id=""
-                          className="form-control"
-                        >
-                          <option value="DEFAULT" disabled>
-                            {this.props.t("SelectCategory")}
-                          </option>
-                          <option value="all">{this.props.t("All")}</option>
-                          <option value="Hairs">
-                            {this.props.t("HAIRSALOON")}
-                          </option>
-                          <option value="Nail">
-                            {this.props.t("NAILSALOON")}
-                          </option>
-                          <option value="Barber">
-                            {this.props.t("BARBERSHOP")}{" "}
-                          </option>
-                          <option value="beauty">
-                            {this.props.t("BEAUTYSALOON")}{" "}
-                          </option>
-                          <option value="Spa">{this.props.t("SPA")} </option>
-                        </select>
-                        <div className="custyom_arrow_link">
-                          <FaChevronDown onClick={this.handleDropdown1} />
-                        </div>
-
-                        {/* className="form-control"
-
-                           {this.state.categoryData && this.state.categoryData.map((data) => {
-                                                                                          return <option value={data._id}>{data.title}</option>
-
-                                                                                    })
-                                                                                    }  */}
-
-                        {/* <option value="DEFAULT" disabled>
-                            Select Category
-                          </option>
-                          {this.state.categoryData &&
-                            this.state.categoryData.map((data) => {
-                              return (
-                                <option value={data._id}>{data.title}</option>
-                              );
-                            })}
-                        </select>{" "}
-                        <div className="custyom_arrow_link">
-                          <FaChevronDown onClick={this.handleDropdown1} />
-                        </div>
-                      </div> */}
-                      </div>
                       <div className="search_btn_slider">
                         <button
                           onClick={() => {
