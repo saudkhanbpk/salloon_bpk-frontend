@@ -432,6 +432,8 @@ export class Home extends Component {
           </div>
         </section>
 
+        {/* Top Salloon section */}
+
         <TopSaloons t={this.props.t} i18n={this.props.i18n} />
 
         <div className="container mt-1">
@@ -483,7 +485,7 @@ export class Home extends Component {
             </div>
           </div>
         </div>
-        <section className="adjust_home_go">
+        {/* <section className="adjust_home_go">
           <div className="main_groups_photos">
             <div className="container py-5">
               <div className="row">
@@ -508,14 +510,14 @@ export class Home extends Component {
                     <p>{this.props.t("Para6")}</p>
                     <h3>{this.props.t("Head5")}</h3>
                     <p>{this.props.t("Para5")}</p>
-                    {/* <div className="playStoreIcons my-4 responsive  ">
+                    <div className="playStoreIcons my-4 responsive  ">
                       <div>
                         <img src={applePlayStore} />
                       </div>
                       <div>
                         <img src={googleplayStore} className="ml-2" />
                       </div>
-                    </div> */}
+                    </div>
                     <div>
                       <Link to="/aboutus" className="btn btn-primary w-50 mt-3">
                         {this.props.t("MoreButton")}
@@ -526,9 +528,9 @@ export class Home extends Component {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/*  */}
-        <div
+        {/* <div
           className="bgImge bg_img_alignment mt-4"
           // style={{ backgroundImage: `url('${Path36}')` }}
           data-aos="fade-right"
@@ -561,7 +563,7 @@ export class Home extends Component {
             </div>
             <div className="main_download_app backimg ml-5 "></div>
           </div>
-        </div>
+        </div> */}
 
         {/*  */}
 
