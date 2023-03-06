@@ -6,6 +6,7 @@
     "@chakra-ui/icons": "^1.0.13",
     "@chakra-ui/react": "^1.8.8",
     "@chakra-ui/slider": "^1.4.1",
+    "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@stripe/react-stripe-js": "^1.4.1",

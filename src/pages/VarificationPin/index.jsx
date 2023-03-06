@@ -40,6 +40,48 @@ export class VarificationPin extends Component {
     }
     this.countDown();
   }
+
+  submitNumber = async () => {
+    if ((this.state.number == "", this.state.number == null)) {
+      this.setState({
+        error_msg: "Please enter your mobile number",
+      });
+    } else {
+      // this.setState({ apiLoader: true });
+      // this.state.apiLoader(true);
+      const response = await this.setUpRecaptcha(this.state.number);
+      console.log(response);
+      this.setState({ result: response });
+      // this.state.result(response);
+      this.setState({ flag: true });
+    }
+  };
+
+  setUpRecaptcha = (number) => {
+    const recaptchaVerifier = new RecaptchaVerifier(
+      "recaptcha-container",
+      {},
+      Auth
+    );
+    recaptchaVerifier.render();
+    return signInWithPhoneNumber(Auth, number, recaptchaVerifier);
+  };
+  verifyOtp = () => {
+    if (this.state.otp == "" || this.state.otp == null) {
+      this.setState({ error_msg: "please enter valid Otp" });
+    } else {
+      this.state.result
+        .confirm(this.state.otp)
+        .then((res) => {
+          localStorage.setItem("otp", res.uid);
+          this.props.history.push("/");
+        })
+        .catch((e) => {
+          console.log(e);
+          this.setState({ error_msg: e });
+        });
+    }
+  };
   countDown = () => {
     let times = setInterval(() => {
       let num = this.state.timer - 1;
@@ -53,135 +95,135 @@ export class VarificationPin extends Component {
     }, 1000);
   };
 
-  resendCode = () => {
-    if (this.state.timer == 0) {
-      this.setState({ timer: 30, otp: "" });
+  // resendCode = () => {
+  //   if (this.state.timer == 0) {
+  //     this.setState({ timer: 30, otp: "" });
 
-      this.resendOtp();
-    }
-  };
+  //     this.resendOtp();
+  //   }
+  // };
 
-  submitNumber = () => {
-    if (this.state.number == "") {
-      this.setState({ error: "Phone number is required." });
-    } else {
-      this.forgetBtn();
-    }
-  };
+  // submitNumber = () => {
+  //   if (this.state.number == "") {
+  //     this.setState({ error: "Phone number is required." });
+  //   } else {
+  //     this.forgetBtn();
+  //   }
+  // };
 
-  forgetBtn = async (e) => {
-    try {
-      const response = await this.setUpRecaptcha(this.state.number);
-      console.log(response);
-      this.setState({ result: response });
-      this.setState({ flag: true });
-      localStorage.setItem("mobile_number", this.state.number);
-    } catch (err) {
-      toast.error("Login failed");
-      this.setState({ error: err.message });
-    }
-  };
-  otp = async (e) => {
-    // this.setState({ otp: e, error_msg: "" });
-    // if (e.length == 6) {
-    //   // this.setState({ apiLoader: true })(`Otp is submited ${e}`);
-    //   let mobile_number = localStorage.getItem("mobile_number");
-    //   let object = {
-    //     mobile_number: mobile_number,
-    //     otp: e,
-    //   };
-    //   AuthApi.varify_pin(object)
-    //     .then((res) => {
-    //       if (res.data.token) {
-    //         this.setState({ apiLoader: false });
-    //         this.setState({
-    //           msg: "Otp varifid success fully.",
-    //           error_msg: "",
-    //         });
-    //         localStorage.setItem("token", res.data.token);
-    //         let updating_password = localStorage.getItem("updating_password");
-    //         if (updating_password == "true") {
-    //           localStorage.removeItem("updating_password");
-    //           this.props.history.push("/update-password");
-    //         } else {
-    //           localStorage.removeItem("updating_password");
-    //           this.props.history.push("/");
-    //         }
-    //       } else {
-    //         this.setState({
-    //           apiLoader: false,
-    //           error_msg: res.data.msg,
-    //         });
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       if (error.response) {
-    //         this.setState({ apiLoader: false });
-    //         this.setState({
-    //           error_msg: error.response.data.msg,
-    //           msg: "",
-    //         });
-    //       }
-    //     });
-    // }
+  // forgetBtn = async (e) => {
+  //   try {
+  //     const response = await this.setUpRecaptcha(this.state.number);
+  //     console.log(response);
+  //     this.setState({ result: response });
+  //     this.setState({ flag: true });
+  //     localStorage.setItem("mobile_number", this.state.number);
+  //   } catch (err) {
+  //     toast.error("Login failed");
+  //     this.setState({ error: err.message });
+  //   }
+  // };
+  // otp = async (e) => {
+  //   // this.setState({ otp: e, error_msg: "" });
+  //   // if (e.length == 6) {
+  //   //   // this.setState({ apiLoader: true })(`Otp is submited ${e}`);
+  //   //   let mobile_number = localStorage.getItem("mobile_number");
+  //   //   let object = {
+  //   //     mobile_number: mobile_number,
+  //   //     otp: e,
+  //   //   };
+  //   //   AuthApi.varify_pin(object)
+  //   //     .then((res) => {
+  //   //       if (res.data.token) {
+  //   //         this.setState({ apiLoader: false });
+  //   //         this.setState({
+  //   //           msg: "Otp varifid success fully.",
+  //   //           error_msg: "",
+  //   //         });
+  //   //         localStorage.setItem("token", res.data.token);
+  //   //         let updating_password = localStorage.getItem("updating_password");
+  //   //         if (updating_password == "true") {
+  //   //           localStorage.removeItem("updating_password");
+  //   //           this.props.history.push("/update-password");
+  //   //         } else {
+  //   //           localStorage.removeItem("updating_password");
+  //   //           this.props.history.push("/");
+  //   //         }
+  //   //       } else {
+  //   //         this.setState({
+  //   //           apiLoader: false,
+  //   //           error_msg: res.data.msg,
+  //   //         });
+  //   //       }
+  //   //     })
+  //   //     .catch((error) => {
+  //   //       if (error.response) {
+  //   //         this.setState({ apiLoader: false });
+  //   //         this.setState({
+  //   //           error_msg: error.response.data.msg,
+  //   //           msg: "",
+  //   //         });
+  //   //       }
+  //   //     });
+  //   // }
 
-    console.log(this.state.otp);
-    if (this.state.otp === "" || this.state.otp === null) {
-      this.setState({ error_msg: "Please enter otp" });
-    }
-    try {
-      let confirm = this.state;
-      console.log(confirm);
-      await this.state.result.confirm(this.state.otp);
-      this.setState({ error_msg: "" });
-      this.props.history.push("/");
-    } catch (e) {
-      this.setState({ error_msg: e.message });
+  //   console.log(this.state.otp);
+  //   if (this.state.otp === "" || this.state.otp === null) {
+  //     this.setState({ error_msg: "Please enter otp" });
+  //   }
+  //   try {
+  //     let confirm = this.state;
+  //     console.log(confirm);
+  //     await this.state.result.confirm(this.state.otp);
+  //     this.setState({ error_msg: "" });
+  //     this.props.history.push("/");
+  //   } catch (e) {
+  //     this.setState({ error_msg: e.message });
 
-      console.log(e);
-    }
-  };
+  //     console.log(e);
+  //   }
+  // };
 
-  resendOtp = () => {
-    this.setState({
-      apiLoader: true,
-      error_msg: "",
-    });
-    let mobile_number = localStorage.getItem("mobile_number");
-    let object = {
-      mobile_number: mobile_number,
-    };
-    AuthApi.res_end_otp_mobile(object)
-      .then((res) => {
-        if (res.data.Error == false) {
-          this.countDown();
-          this.setState({ apiLoader: false });
-        }
-      })
-      .catch((error) => {});
-  };
+  // resendOtp = () => {
+  //   this.setState({
+  //     apiLoader: true,
+  //     error_msg: "",
+  //   });
+  //   let mobile_number = localStorage.getItem("mobile_number");
+  //   let object = {
+  //     mobile_number: mobile_number,
+  //   };
+  //   AuthApi.res_end_otp_mobile(object)
+  //     .then((res) => {
+  //       if (res.data.Error == false) {
+  //         this.countDown();
+  //         this.setState({ apiLoader: false });
+  //       }
+  //     })
+  //     .catch((error) => {});
+  // };
 
-  async setUpRecaptcha(number) {
-    const recaptchaVerifier = new RecaptchaVerifier(
-      "recaptcha-container",
-      {},
-      Auth
-    );
-    recaptchaVerifier.render();
-    return signInWithPhoneNumber(Auth, number, recaptchaVerifier);
-  }
+  // async setUpRecaptcha(number) {
+  //   const recaptchaVerifier = new RecaptchaVerifier(
+  //     "recaptcha-container",
+  //     {},
+  //     Auth
+  //   );
+  //   recaptchaVerifier.render();
+  //   return signInWithPhoneNumber(Auth, number, recaptchaVerifier);
+  // }
 
-  verifyOtp = async (e) => {
-    this.setState({ error: "" });
-    if (this.state.otp === "" || this.state.otp === null) return;
-    try {
-      await this.state.result.confirm(this.state.otp);
-      this.props.history.push("/");
-    } catch (err) {
-      this.setState({ error: err.message });
-    }
-    console.log(this.state);
-  };
+  // verifyOtp = async (e) => {
+  //   this.setState({ error: "" });
+  //   if (this.state.otp === "" || this.state.otp === null) return;
+  //   try {
+  //     await this.state.result.confirm(this.state.otp);
+  //     this.props.history.push("/");
+  //   } catch (err) {
+  //     this.setState({ error: err.message });
+  //   }
+  //   console.log(this.state);
+  // };
   render() {
     return (
       // <div className="container-fluid">

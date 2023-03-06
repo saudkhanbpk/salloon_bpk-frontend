@@ -418,6 +418,22 @@ export class Home extends Component {
           </Slider>
         </div>
 
+        <section className="categories_home">
+          <div className="container">
+            <div className="heading_home_categories">
+              <h3>{this.props.t("Head7")}</h3>
+              <p>
+                {this.props.t("Para8")} <br /> {this.props.t("Para8Half")}
+              </p>
+            </div>
+            <div className="categories_list_home">
+              <CategorieCardList />
+            </div>
+          </div>
+        </section>
+
+        <TopSaloons t={this.props.t} i18n={this.props.i18n} />
+
         <div className="container mt-1">
           <div className="howitsword text-center">
             <p>{this.props.t("Para1")}</p>
@@ -467,60 +483,6 @@ export class Home extends Component {
             </div>
           </div>
         </div>
-        {/*  */}
-        <div
-          className="bgImge bg_img_alignment mt-4"
-          // style={{ backgroundImage: `url('${Path36}')` }}
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-        >
-          <div className="container d-flex py-3">
-            <div className="main_download_app">
-              <div className="downapp">
-                <h1>{this.props.t("DownloadApp")}</h1>
-              </div>
-              <p>{this.props.t("Para9")}</p>
-              <div className="playStoreIcons">
-                <div>
-                  <img src={applePlayStore} />
-                </div>
-                <div>
-                  <img src={googleplayStore} className="ml-2" />
-                </div>
-              </div>
-              <button
-                style={{ color: "white" }}
-                className="link btn btn-primary"
-                onClick={() => {
-                  this.props.history.push("/signup/:user");
-                }}
-              >
-                {this.props.t("HomeSignupButton")}
-              </button>
-            </div>
-            <div className="main_download_app backimg ml-5 "></div>
-          </div>
-        </div>
-
-        {/*  */}
-
-        <section className="categories_home">
-          <div className="container">
-            <div className="heading_home_categories">
-              <h3>{this.props.t("Head7")}</h3>
-              <p>
-                {this.props.t("Para8")} <br /> {this.props.t("Para8Half")}
-              </p>
-            </div>
-            <div className="categories_list_home">
-              <CategorieCardList />
-            </div>
-          </div>
-        </section>
-
-        <TopSaloons t={this.props.t} i18n={this.props.i18n} />
-
         <section className="adjust_home_go">
           <div className="main_groups_photos">
             <div className="container py-5">
@@ -565,6 +527,43 @@ export class Home extends Component {
             </div>
           </div>
         </section>
+        {/*  */}
+        <div
+          className="bgImge bg_img_alignment mt-4"
+          // style={{ backgroundImage: `url('${Path36}')` }}
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
+          <div className="container d-flex py-3">
+            <div className="main_download_app">
+              <div className="downapp">
+                <h1>{this.props.t("DownloadApp")}</h1>
+              </div>
+              <p>{this.props.t("Para9")}</p>
+              <div className="playStoreIcons">
+                <div>
+                  <img src={applePlayStore} />
+                </div>
+                <div>
+                  <img src={googleplayStore} className="ml-2" />
+                </div>
+              </div>
+              <button
+                style={{ color: "white" }}
+                className="link btn btn-primary"
+                onClick={() => {
+                  this.props.history.push("/signup/:user");
+                }}
+              >
+                {this.props.t("HomeSignupButton")}
+              </button>
+            </div>
+            <div className="main_download_app backimg ml-5 "></div>
+          </div>
+        </div>
+
+        {/*  */}
 
         {/* <section className='deluxeProducst py-3 pb-4'>
                               <div className='container deluxeProducst'>

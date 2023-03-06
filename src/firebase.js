@@ -14,24 +14,21 @@
 // const app = initializeApp(firebaseConfig);
 // export const Auth = getAuth(app);
 
-
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth,GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyC6cFrkfYQwLyFtcuebaYWozYjVMufA08o",
-  authDomain: "social-login-829f1.firebaseapp.com",
-  projectId: "social-login-829f1",
-  storageBucket: "social-login-829f1.appspot.com",
-  messagingSenderId: "553895430431",
-  appId: "1:553895430431:web:23038311a71ff2a4b8082a",
-  measurementId: "G-B05NX4F0FC"
+  apiKey: "AIzaSyAMTLaPTPYe0al0dhZJ4XbE0YHFCqAx494",
+  authDomain: "reminder-app-95f04.firebaseapp.com",
+  projectId: "reminder-app-95f04",
+  storageBucket: "reminder-app-95f04.appspot.com",
+  messagingSenderId: "937378119577",
+  appId: "1:937378119577:web:b8982cb2717fbdf7c91d08",
+  measurementId: "G-PC3MMJZPN6",
 };
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const Auth = getAuth(app)
+const Auth = getAuth(app);
 const Provider = new GoogleAuthProvider();
-export {Auth, Provider};
+export { Auth, Provider };
