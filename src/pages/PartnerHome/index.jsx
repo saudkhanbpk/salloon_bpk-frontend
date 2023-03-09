@@ -67,14 +67,13 @@ export class PartnerHome extends Component {
   }
 
   componentDidMount() {
-    
     Products.getAllProducts().then((res) => {
       this.setState({ data: res.data.data });
     });
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
-    })
+      behavior: "smooth",
+    });
   }
   render() {
     const homeslider = {
@@ -167,7 +166,11 @@ export class PartnerHome extends Component {
                   <h2 className="mt-5">
                     {" "}
                     {/* <b>Simpler way to  <span>the best version</span>of your business</b> */}
-                    <p style={{ fontSize: 40, fontWeight: "bolder" }}>Simpler way to <br /> the best version<br />of your business</p>
+                    <p style={{ fontSize: 40, fontWeight: "bolder" }}>
+                      Simpler way to <br /> the best version
+                      <br />
+                      of your business
+                    </p>
                     {/* <b>
                       <span style={{ color: "black",fontSize:34}}>Book</span>{" "}
                      <span style={{fontSize:34 }}> Ulforglemmelige <br />
@@ -204,7 +207,9 @@ export class PartnerHome extends Component {
         <div className="whySectio">
           <img src={whyImge} />
           <div className="textSeciotn">
-            <h2>Why should you become <br /> our partner?</h2>
+            <h2>
+              Why should you become <br /> our partner?
+            </h2>
             <p>
               Benefits of an online barber booking application <br />
               for customer satisfaction
@@ -239,10 +244,10 @@ export class PartnerHome extends Component {
                 <img src={calendar} alt="cardImge" />
                 <h4>More Controle</h4>
                 <p>
-                  Salloon gives you complete control over your business.
-                  we assist you in gaining a better understanding of your
-                  business,and our platform allows you to easily track
-                  your sales,bookings schedule,and employees activities.
+                  Salloon gives you complete control over your business. we
+                  assist you in gaining a better understanding of your
+                  business,and our platform allows you to easily track your
+                  sales,bookings schedule,and employees activities.
                 </p>
               </div>
             </div>
@@ -257,11 +262,9 @@ export class PartnerHome extends Component {
                 <p>
                   Many of the time-consuming tasks are solved for you by our
                   features,allowing you to focus on more important activities.
-                  This Way We can take care of your day-to day issues while
-                  you focus on growing your company's value without unnecessary
+                  This Way We can take care of your day-to day issues while you
+                  focus on growing your company's value without unnecessary
                   worrying.
-
-
                 </p>
               </div>
             </div>
@@ -1002,10 +1005,7 @@ export class PartnerHome extends Component {
               </button>
               <div className="textBtnImge d-flex mt-3">
                 <div className="animatedImges">
-                  <img
-                    src={errowimge}
-                    alt="sdf"
-                  />
+                  <img src={errowimge} alt="sdf" />
                   <img src={errorIcons} alt="sdf" />
                 </div>
                 {/* <img src={textBtnImge} className='w-auto' alt='Imge'/> */}

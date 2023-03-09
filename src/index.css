@@ -2976,7 +2976,7 @@ footer {
 }
 
 .main_staf_top_list img {
-  transition: transform 0.3s ease-in;
+  transition: transform 0s ease-in;
 }
 
 .main_staf_top_list:hover img {

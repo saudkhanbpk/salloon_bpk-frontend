@@ -13,7 +13,6 @@ const TopSaloons = (props) => {
   const saloons = useSelector((state) => state.SaloonList);
   const customerDetail = useSelector((state) => state.CustomerDetail);
 
-
   const SaloonTime = (open, close) => {
     let time = moment().format("HH:mm");
     let openTime = moment(open, "HH:mm A").format("HH:mm");
@@ -42,7 +41,7 @@ const TopSaloons = (props) => {
           <div className="row">
             {saloons.Top &&
               saloons.Top.map((data) => {
-                console.log(data.Address)
+                console.log(data.Address);
 
                 return (
                   <div className="col-md-4" key={data.id}>
@@ -50,7 +49,7 @@ const TopSaloons = (props) => {
                       className="main_new_saloons"
                       onClick={() => props.history.push(`/saloon/${data._id}`)}
                       data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom"
+                      data-aos-anchor-placement="top-bottom"
                     >
                       <div className="saloons_img_content">
                         {/* <img src={`${process.env.REACT_APP_BASE_URL}/${data.Profile_Pic}`} alt="" className="img-fluid" /> */}
@@ -58,12 +57,13 @@ const TopSaloons = (props) => {
                         <div className="saloon_status">
                           <button
                             type="button"
-                            className={`btn ${data.Open_Time
-                              ? "btn-success bg-success"
-                              : data.Close_Time
+                            className={`btn ${
+                              data.Open_Time
+                                ? "btn-success bg-success"
+                                : data.Close_Time
                                 ? "btn-secondary"
                                 : "btn"
-                              }`}
+                            }`}
                           >
                             {" "}
                             {SaloonTime(data.Open_Time, data.Close_Time)}{" "}
@@ -71,7 +71,6 @@ const TopSaloons = (props) => {
 
                           <div className="ratings_main">
                             {[1, 1, 1, 1, 1].map((data, i) => {
-
                               if (i < data.Rating) {
                                 return <AiFillStar />;
                               }

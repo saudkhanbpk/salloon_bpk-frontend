@@ -18,13 +18,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyAMTLaPTPYe0al0dhZJ4XbE0YHFCqAx494",
-  authDomain: "reminder-app-95f04.firebaseapp.com",
-  projectId: "reminder-app-95f04",
-  storageBucket: "reminder-app-95f04.appspot.com",
-  messagingSenderId: "937378119577",
-  appId: "1:937378119577:web:b8982cb2717fbdf7c91d08",
-  measurementId: "G-PC3MMJZPN6",
+  apiKey: "AIzaSyD98LczGiCRpLxHV5kmp1o311YGADO1MXo",
+  authDomain: "salloon-frontend.firebaseapp.com",
+  projectId: "salloon-frontend",
+  storageBucket: "salloon-frontend.appspot.com",
+  messagingSenderId: "961520707258",
+  appId: "1:961520707258:web:9d7d744345202662f34483",
+  measurementId: "G-ZER7YJC1E5",
 };
 
 // Initialize Firebase

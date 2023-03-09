@@ -28,6 +28,7 @@
     "jquery": "^3.6.1",
     "moment": "^2.29.1",
     "multiselect-react-dropdown": "^2.0.25",
+    "netlify-cli": "^13.0.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-accessible-dropdown-menu-hook": "^3.2.0",
