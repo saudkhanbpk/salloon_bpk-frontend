@@ -4,7 +4,7 @@ import Header from "../../Componet/Headers/Header";
 import Footer from "../../Componet/Footer/Footer";
 import sideImge from "../../assets/imge/newimages/photo-1560066984-138dadb4c035.png";
 import pic1 from "../../assets/imge/newimages/4.png";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 
 import backSlash from "../../assets/imge/backSlash.png";
 import { FaFilter } from "react-icons/fa";
@@ -50,7 +50,7 @@ class Saloons extends Component {
       saloons: [],
       like: false,
       CustomTabs: 1,
-      location:"",
+      location: "",
       filters: {
         Categories: [],
         Rating: 0,
@@ -60,26 +60,23 @@ class Saloons extends Component {
         Sort_by: "Most_Popular",
       },
     };
-    this.btn1 = React.createRef()
-    this.btn2 = React.createRef()
-    this.btn3 = React.createRef()
-    this.btn4 = React.createRef()
-    this.btn5 = React.createRef()
-    this.btn6 = React.createRef()
+    this.btn1 = React.createRef();
+    this.btn2 = React.createRef();
+    this.btn3 = React.createRef();
+    this.btn4 = React.createRef();
+    this.btn5 = React.createRef();
+    this.btn6 = React.createRef();
   }
 
- 
-
-checkClick() {
-  // console.log('clicked')
-}
+  checkClick() {
+    // console.log('clicked')
+  }
   componentDidMount() {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
     this.getSaloons()("hhh");
-
   }
 
   getSaloons = () => {
@@ -108,7 +105,7 @@ checkClick() {
             this.setState({ apiLoader: false, saloons: res.data.Data });
           }
         })
-        .catch((error) => { });
+        .catch((error) => {});
     } else if (status == "Barber") {
       let data = {
         Status: "Barber",
@@ -119,7 +116,7 @@ checkClick() {
             this.setState({ apiLoader: false, saloons: res.data.Data });
           }
         })
-        .catch((error) => { });
+        .catch((error) => {});
     } else if (status == "Hairs") {
       let data = {
         Status: "Hairs",
@@ -130,7 +127,7 @@ checkClick() {
             this.setState({ apiLoader: false, saloons: res.data.Data });
           }
         })
-        .catch((error) => { });
+        .catch((error) => {});
     } else if (status == "beauty") {
       let data = {
         Status: "beauty",
@@ -141,7 +138,7 @@ checkClick() {
             this.setState({ apiLoader: false, saloons: res.data.Data });
           }
         })
-        .catch((error) => { });
+        .catch((error) => {});
     } else if (status == "Nail") {
       let data = {
         Status: "Nail",
@@ -152,7 +149,7 @@ checkClick() {
             this.setState({ apiLoader: false, saloons: res.data.Data });
           }
         })
-        .catch((error) => { });
+        .catch((error) => {});
     } else if (status == "Spa") {
       let data = {
         Status: "Spa",
@@ -163,7 +160,7 @@ checkClick() {
             this.setState({ apiLoader: false, saloons: res.data.Data });
           }
         })
-        .catch((error) => { });
+        .catch((error) => {});
     }
   };
   handlePageClick = (page) => {
@@ -272,9 +269,9 @@ checkClick() {
       Sort_by: Sort_by,
       Coordinates:
         this.props.locationData &&
-          this.props.locationData.lat &&
-          this.props.locationData &&
-          this.props.locationData.lat
+        this.props.locationData.lat &&
+        this.props.locationData &&
+        this.props.locationData.lat
           ? [this.props.locationData.lng, this.props.locationData.lat]
           : [],
     }("data", data);
@@ -287,39 +284,36 @@ checkClick() {
     })(this.state.filters);
   };
 
-    // handleSearch = () => {
-    //   this.state.saloons.filter((valu) => {
-    //     if(this.state.search == "") {
-    //       return valu
-    //     } else if (this.data.name.toUpperCase().includes(this.state.search.toUpperCase())) {
-    //       return valu
-    //     }
-    //   })
-    //   console.log(this.setState)
+  // handleSearch = () => {
+  //   this.state.saloons.filter((valu) => {
+  //     if(this.state.search == "") {
+  //       return valu
+  //     } else if (this.data.name.toUpperCase().includes(this.state.search.toUpperCase())) {
+  //       return valu
+  //     }
+  //   })
+  //   console.log(this.setState)
 
-    // }
-    componentDidMount() {
-      if(this.props.location?.state?.state=="Hairs"){
-          this.btn1.current.click()
-          // console.log("click btn")
-        }
-        else if(this.props.location?.state?.state=="Nail"){
-          this.btn2.current.click()
-        }else if(this.props.location?.state?.state=="Barber"){
-          this.btn3.current.click()
-        }else if(this.props.location?.state?.state=="beauty"){
-          this.btn4.current.click()
-        }else if(this.props.location?.state?.state=="Spa"){
-          this.btn5.current.click()
-        }else if(this.props.location?.state?.state=="all"){
-          this.btn6.current.click()
-        }
-        else{
-          this.btn6.current.click()
-        }
+  // }
+  componentDidMount() {
+    if (this.props.location?.state?.state == "Hairs") {
+      this.btn1.current.click();
+      // console.log("click btn")
+    } else if (this.props.location?.state?.state == "Nail") {
+      this.btn2.current.click();
+    } else if (this.props.location?.state?.state == "Barber") {
+      this.btn3.current.click();
+    } else if (this.props.location?.state?.state == "beauty") {
+      this.btn4.current.click();
+    } else if (this.props.location?.state?.state == "Spa") {
+      this.btn5.current.click();
+    } else if (this.props.location?.state?.state == "all") {
+      this.btn6.current.click();
+    } else {
+      this.btn6.current.click();
+    }
   }
   render() {
-
     return (
       <>
         <section
@@ -389,9 +383,8 @@ checkClick() {
                     onClick={() => {
                       this.setState({ CustomTabs: 1 });
                       this.getSaloons("all");
-                      this.checkClick()
-
-                    }}   
+                      this.checkClick();
+                    }}
                     autoFocus
                   >
                     All
@@ -407,10 +400,9 @@ checkClick() {
                     onClick={() => {
                       this.setState({ CustomTabs: 2 });
                       this.getSaloons("Hairs");
-                      this.checkClick()
-                     
-                    }} 
-                    autoFocus={this.props.location?.state?.state==="Hairs" }
+                      this.checkClick();
+                    }}
+                    autoFocus={this.props.location?.state?.state === "Hairs"}
                   >
                     HAIR SALLOON
                   </button>
@@ -422,13 +414,12 @@ checkClick() {
                   <button
                     href="#"
                     ref={this.btn2}
-
                     onClick={() => {
                       this.setState({ CustomTabs: 3 });
                       this.getSaloons("Nail");
-                      this.checkClick()
-
-                    }}autoFocus={this.props.location?.state?.state==="Nail"}
+                      this.checkClick();
+                    }}
+                    autoFocus={this.props.location?.state?.state === "Nail"}
                   >
                     NAIL SALLOON
                   </button>
@@ -439,14 +430,13 @@ checkClick() {
                 <div className="all-btn">
                   <button
                     ref={this.btn3}
-
                     href="#"
                     onClick={() => {
                       this.setState({ CustomTabs: 4 });
                       this.getSaloons("Barber");
-                      this.checkClick()
-
-                    }}autoFocus={this.props.location?.state?.state==="Barber"}
+                      this.checkClick();
+                    }}
+                    autoFocus={this.props.location?.state?.state === "Barber"}
                   >
                     BARBER SHOP
                   </button>
@@ -457,14 +447,13 @@ checkClick() {
                 <div className="all-btn">
                   <button
                     ref={this.btn4}
-
                     href="#"
                     onClick={() => {
                       this.setState({ CustomTabs: 5 });
                       this.getSaloons("beauty");
-                      this.checkClick()
-
-                    }}autoFocus={this.props.location?.state?.state==="beauty"}
+                      this.checkClick();
+                    }}
+                    autoFocus={this.props.location?.state?.state === "beauty"}
                   >
                     BEAUTY SALLOON
                   </button>
@@ -475,14 +464,13 @@ checkClick() {
                 <div className="all-btn">
                   <button
                     ref={this.btn5}
-
                     href="#"
                     onClick={() => {
                       this.setState({ CustomTabs: 6 });
                       this.getSaloons("Spa");
-                      this.checkClick()
-
-                    }}autoFocus={this.props.location?.state?.state==="Spa"}
+                      this.checkClick();
+                    }}
+                    autoFocus={this.props.location?.state?.state === "Spa"}
                   >
                     SPA
                   </button>
@@ -578,55 +566,136 @@ checkClick() {
                     </div>
                     <div className="listing_categories_filters">
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn1}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 2 });
+                            this.getSaloons("Hairs");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Hairstyle
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn2}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 3 });
+                            this.getSaloons("Nail");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
-                          Makeup
+                          Nail Salloon
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn1}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 2 });
+                            this.getSaloons("Hairs");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Hair Coloring
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn5}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 6 });
+                            this.getSaloons("Spa");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Spa
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn4}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 5 });
+                            this.getSaloons("beauty");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Facial Makeup
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn4}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 5 });
+                            this.getSaloons("beauty");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Trim & Shaving
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn1}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 2 });
+                            this.getSaloons("Hairs");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Hair Bonding
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn5}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 6 });
+                            this.getSaloons("Spa");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Keratin
                         </label>
                       </div>
                       <div className="form-group">
-                        <input className="checkbox1" type="checkbox" />
+                        <input
+                          ref={this.btn4}
+                          className="checkbox1"
+                          type="checkbox"
+                          onClick={() => {
+                            this.setState({ CustomTabs: 5 });
+                            this.getSaloons("beauty");
+                            this.checkClick();
+                          }}
+                        />
                         <label className="ml-3" for="">
                           Face Cleansing
                         </label>
@@ -870,8 +939,10 @@ checkClick() {
                         type="search"
                         className="form-control"
                         placeholder="Search your salloon here"
-                       value={this.state.search}
-                        onChange={(event) => this.setState({search: event.target.value})}
+                        value={this.state.search}
+                        onChange={(event) =>
+                          this.setState({ search: event.target.value })
+                        }
                       />
                       <AiOutlineSearch />
                     </div>
@@ -943,86 +1014,87 @@ checkClick() {
                   ""
                 )}
                 {this.state.saloons &&
-                  this.state.saloons.filter((item) => {
-                    return this.state.search.toLowerCase() == '' ?
-                    item
-                    :
-                    item.Name.toLowerCase().includes(this.state.search);
-                  }).map((data) => {
-                    return (
-                      <div className="start_slisting">
-                        <div
-                          className="main_list_salons"
-                          onClick={() =>
-                            this.props.history.push(`/saloon/${data._id}`)
-                          }
-                          data-aos="fade-up"
-                          data-aos-duration="900"
-                        >
-                          <div className="img_sec_salon">
-                            {/* <img src={`${process.env.REACT_APP_BASE_URL}/${data.Profile_Pic}`} alt="" className="img-fluid" /> */}
-                            <img className="img-fluid" src={pic1} />
-                            <div className="image_tag">
-                              <p>New</p>
-                            </div>
-                          </div>
-                          <div className="salon_content_list">
-                            <div className="top_salons_list_content">
-                              <h3>{data.Name}</h3>
-                              <p>
-                                {data.Description
-                                  ? `${data.Description.substring(0, 150)}...`
-                                  : ""}
-                              </p>
-                            </div>
-                            <div className="timer_salons">
-                              <p>
-                                {" "}
-                                <img src={color_loca} alt="" />{" "}
-                                {data.Address && data.Address.Address}
-                              </p>
-                              <p>
-                                {" "}
-                                <img src={color_timw} alt="" /> Open Now{" "}
-                                {data.Open_Time} - {data.Close_Time}
-                              </p>
-                            </div>
-                            <div className="timer_salons with_img">
-                              <div className="ratingStars">
-                                {/* <p> <img src={multi_loca} alt="" /> 288 Empola Street, NewYork</p> */}
-                                {[1, 1, 1, 1, 1].map((dat, i) => {
-                                  if (i < data.Rating) {
-                                    return (
-                                      <span>
-                                        <GiRoundStar />
-                                      </span>
-                                    );
-                                  }
-                                })}
-                                {[1, 1, 1, 1, 1].map((dat, i) => {
-                                  if (i < 5 - data.Rating) {
-                                    return (
-                                      <span>
-                                        <GiRoundStar className="half_star" />
-                                      </span>
-                                    );
-                                  }
-                                })}
-                                <p>{parseFloat(data.Rating)}</p>
+                  this.state.saloons
+                    .filter((item) => {
+                      return this.state.search.toLowerCase() == ""
+                        ? item
+                        : item.Name.toLowerCase().includes(this.state.search);
+                    })
+                    .map((data) => {
+                      return (
+                        <div className="start_slisting">
+                          <div
+                            className="main_list_salons"
+                            onClick={() =>
+                              this.props.history.push(`/saloon/${data._id}`)
+                            }
+                            data-aos="fade-up"
+                            data-aos-duration="900"
+                          >
+                            <div className="img_sec_salon">
+                              {/* <img src={`${process.env.REACT_APP_BASE_URL}/${data.Profile_Pic}`} alt="" className="img-fluid" /> */}
+                              <img className="img-fluid" src={pic1} />
+                              <div className="image_tag">
+                                <p>New</p>
                               </div>
                             </div>
-                            <div className="add_saloon_fav added_fav">
-                              <AiFillHeart />
+                            <div className="salon_content_list">
+                              <div className="top_salons_list_content">
+                                <h3>{data.Name}</h3>
+                                <p>
+                                  {data.Description
+                                    ? `${data.Description.substring(0, 150)}...`
+                                    : ""}
+                                </p>
+                              </div>
+                              <div className="timer_salons">
+                                <p>
+                                  {" "}
+                                  <img src={color_loca} alt="" />{" "}
+                                  {data.Address && data.Address.Address}
+                                </p>
+                                <p>
+                                  {" "}
+                                  <img src={color_timw} alt="" /> Open Now{" "}
+                                  {data.Open_Time} - {data.Close_Time}
+                                </p>
+                              </div>
+                              <div className="timer_salons with_img">
+                                <div className="ratingStars">
+                                  {/* <p> <img src={multi_loca} alt="" /> 288 Empola Street, NewYork</p> */}
+                                  {[1, 1, 1, 1, 1].map((dat, i) => {
+                                    if (i < data.Rating) {
+                                      return (
+                                        <span>
+                                          <GiRoundStar />
+                                        </span>
+                                      );
+                                    }
+                                  })}
+                                  {[1, 1, 1, 1, 1].map((dat, i) => {
+                                    if (i < 5 - data.Rating) {
+                                      return (
+                                        <span>
+                                          <GiRoundStar className="half_star" />
+                                        </span>
+                                      );
+                                    }
+                                  })}
+                                  <p>{parseFloat(data.Rating)}</p>
+                                </div>
+                              </div>
+                              <div className="add_saloon_fav added_fav">
+                                <AiFillHeart />
+                              </div>
                             </div>
+                            <LikeSaloon
+                              customerDetail={this.props.customerDetail}
+                              saloon={data._id}
+                            />
                           </div>
-                          <LikeSaloon
-                            customerDetail={this.props.customerDetail}
-                            saloon={data._id}
-                          />
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
 
                 {/* <=========== OLD CODE ==============> */}
               </div>
